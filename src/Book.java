@@ -1,5 +1,6 @@
 public class Book <T> {
-    protected T nameOfBook;
+    protected T nameOfBook;  // принцип единственной ответственности,
+                             // каждый класс содержит только свою зону отвественности
     protected T author;
 
     public Book() {

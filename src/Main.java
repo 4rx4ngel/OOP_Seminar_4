@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Library<String> library = new Library<>();
+        Library library = new Library();
         Book<String> book_1 = new Book<>("Книга_1", "Автор_1");
         library.addBook(1,book_1);
         Book<String> book_2 = new Book<>("Книга_2", "Автор_2");

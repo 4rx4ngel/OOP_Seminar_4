@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Library<T> extends Book<T> {
+public class Library implements InteractionWithBooks { // невозможно продемонстрировать принцип
+                                                       // подстановки Барбары Лисков, т.к. нет
+                                                       // наследования ни от какого класса
     private List<LibraryCard<Integer, String>> issuedBooks;
 
 
@@ -13,12 +15,13 @@ public class Library<T> extends Book<T> {
         super();
         this.issuedBooks = new ArrayList<>();
     }
-
-    public  void addBook(int cardNumber, Book<T> book) {
+    @Override
+    public <T> void addBook(int cardNumber, Book<T> book) {
         LibraryCard<Integer, String> card = new LibraryCard<>(cardNumber, book.getAuthor()
-                + ", "+ book.getNameOfBook());
+                + ", " + book.getNameOfBook());
         issuedBooks.add(card);
     }
+    // Open-closed principle(выделили отдельный интерфейс для взаимодействия с книгами и переопределяем его методы)
 
     public LibraryCard<Integer, String> libraryCardIssuance(int cardNumber) {
         for (LibraryCard<Integer, String> card : issuedBooks) {
@@ -29,6 +32,7 @@ public class Library<T> extends Book<T> {
         return null;
     }
 
+    @Override
     public void showInfo() {
         System.out.println("Информация о всех выданных книгах: ");
         for (LibraryCard<Integer, String> card : issuedBooks) {

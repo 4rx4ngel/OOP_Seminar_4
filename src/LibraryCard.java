@@ -1,5 +1,6 @@
 public class LibraryCard<K, V>{
-    protected K numberOfCard;
+    protected K numberOfCard; // принцип единственной ответственности,
+                              // каждый класс содержит только свою зону отвественности
     protected V informationAboutBook;
 
     public LibraryCard() {
